@@ -3,7 +3,7 @@ LOTOFÁCIL - Estudo de repetição em concursos e geração de 15 números aleat
 Objetivo:
 
 Código Python para análise dos resultados da Lotofácil, verificando a existência de repetição de números em qualquer concurso,
-em seguida, permite ao usuário gerar números aleatórios (randômicos), em seguida escolher a quantidade de números
+e na sequência, permite ao usuário gerar números aleatórios (randômicos), em seguida escolher a quantidade de números
 pares/ímpares, onde pares + ímpares some 15, finalizando com a geração dos 15 números ordenados. Após a geração, o sistema compara
 o jogo gerado com a base de concursos do arquivo "lotofacil.xlsx", de maneira que se os números gerados pelo software, por um acaso
 já existam, o usuário poderá gerar outro jogo, evitando assim, a repetição.
