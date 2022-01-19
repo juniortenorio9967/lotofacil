@@ -14,7 +14,7 @@ sequenciado no arquivo "lotofacil.xlsx", atualizado em 17/01/2022.
 Para executar os códigos Python, foi utilizado aplicativo web Jupyter Notebook, que faz parte do pacote de desenvolvimento Python ANACONDA,
 onde também estão incluídas várias bibliotecas incluindo as que são utilizadas nesse código, como Pandas e Numpy.
 O Jupyter Notebook é como um bloco de notas, onde o desenvolvedor pode executar trechos curtos e corrigir erros rapidamente, o que acelera o desenvolvimento,
-entretanto, o código abaixo poderá ser colado integralmente de uma só vez.
+entretanto, o código abaixo poderá ser colado integralmente em uma célula do Jupyter, e executado de uma só vez.
 
 
 ### Importar libs e base de dados
