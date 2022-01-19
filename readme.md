@@ -1,4 +1,4 @@
-LOTOFÁCIL - Estudo de repetição em concursos e geração de 15 números aleatórios
+## LOTOFÁCIL - Estudo de repetição em concursos e geração de 15 números aleatórios
 
 Objetivo:
 
@@ -17,87 +17,81 @@ O Jupyter Notebook é como um bloco de notas, onde o desenvolvedor pode executar
 entretanto, o código abaixo poderá ser colado integralmente de uma só vez.
 
 
-#Importar libs e base de dados
+### Importar libs e base de dados
 
-import pandas as pd
-import numpy as np
-import math, random
+    import pandas as pd
+    import numpy as np
+    import math, random
 
-loto = pd.read_excel("lotofacil.xlsx")
+    loto = pd.read_excel("lotofacil.xlsx")
 
-# descarta linhas "missing value"
-loto.dropna(subset=["Concurso"], inplace=True)
+### Descarta linhas "missing value"
+    loto.dropna(subset=["Concurso"], inplace=True)
 
-# Extrai sub-conjunto contendo apenas a bolas sorteadas
-sobolas = loto[['Bola1', 'Bola2', 'Bola3', 'Bola4', 'Bola5', 'Bola6','Bola7', 'Bola8', 'Bola9','Bola10', 'Bola11', 'Bola12','Bola13', 'Bola14', 'Bola15']]
+### Extrai sub-conjunto contendo apenas a bolas sorteadas
+    sobolas = loto[['Bola1', 'Bola2', 'Bola3', 'Bola4', 'Bola5', 'Bola6','Bola7', 'Bola8', 'Bola9','Bola10', 'Bola11', 'Bola12','Bola13', 'Bola14', 'Bola15']]
 
 
-# Gera grupos de numeros pares e ímpares
+### Gera grupos de numeros pares e ímpares
 
-def gerarImpar():
-    num = 2
-    while num % 2 == 0:
-        num = math.ceil(25 * random.random())
-
+    def gerarImpar():
+        num = 2
+        while num % 2 == 0:
+            num = math.ceil(25 * random.random())
     return num
 
-def gerarPar():
-    num = 3
-    while num % 2 != 0:
-        num = math.ceil(25 * random.random())
-
+    def gerarPar():
+        num = 3
+        while num % 2 != 0:
+            num = math.ceil(25 * random.random())
     return num
 
-def gerarListaImpares(qtde):
-       
-    imparesGerados = []
-    while len(imparesGerados) < qtde:
-        while True:
-            x = gerarImpar()
-            if imparesGerados.count(x) == 0: #verifica se há ocorrencia x na lista
-                imparesGerados.append(x)     # não existindo, adiciona x à lista
-                break                        # e sai do while true
-            
+    def gerarListaImpares(qtde):
+       imparesGerados = []
+        while len(imparesGerados) < qtde:
+            while True:
+                x = gerarImpar()
+                if imparesGerados.count(x) == 0: #verifica se há ocorrencia x na lista
+                    imparesGerados.append(x)     # não existindo, adiciona x à lista
+                    break                        # e sai do while true
     return sorted(imparesGerados)
 
-def gerarListaPares(qtde):
-    
-    paresGerados = []
-    while len(paresGerados) < qtde:
-        while True:
-            x = gerarPar()
-            if paresGerados.count(x) == 0: #verifica se há ocorrencia x na lista
-                paresGerados.append(x)     # não existindo, adiciona x à lista
-                break
+    def gerarListaPares(qtde):
+        paresGerados = []
+        while len(paresGerados) < qtde:
+            while True:
+                x = gerarPar()
+                if paresGerados.count(x) == 0: #verifica se há ocorrencia x na lista
+                    paresGerados.append(x)     # não existindo, adiciona x à lista
+                    break
                 
     return sorted(paresGerados)
 
-# o usuário escolhe a quantidade de pares e ímpares
-# e o sistema gera um conjunto de 15 números
+### O usuário escolhe a quantidade de pares e ímpares e o sistema gera um conjunto de 15 números
 
-volanteGerado = sorted(gerarListaImpares(8) + gerarListaPares(7))
+    volanteGerado = sorted(gerarListaImpares(8) + gerarListaPares(7))
 
 
-# Verifica se o volante gerado já existe na base de dados,
-# evitando que o usuário repita um jogo existente
+### Verifica se o volante gerado já existe na base de dados, evitando que o usuário repita um jogo existente
 
-meujogo = np.asarray(volanteGerado)
-print('meu jogo convertido para numpy')
-print(meujogo)
-qtde_linhas = len(sobolas)
+    meujogo = np.asarray(volanteGerado)
+    print('meu jogo convertido para numpy')
+    print(meujogo)
+    qtde_linhas = len(sobolas)
 
-for i in range(qtde_linhas):
-    origin = i + 1 #contador
-    origem = np.asarray(sobolas.iloc[i]) #array numpy
-    result = np.array_equal(origem, meujogo)
-    if result == True:
-        print(result)
-        print("Duplicidade encontrada:")
-        print(origin)
-        print(origem)
-        print("Seu jogo:")
-        print(meujogo)
+    for i in range(qtde_linhas):
+        origin = i + 1 #contador
+        origem = np.asarray(sobolas.iloc[i]) #array numpy
+        result = np.array_equal(origem, meujogo)
+        if result == True:
+            print(result)
+            print("Duplicidade encontrada:")
+            print(origin)
+            print(origem)
+            print("Seu jogo:")
+            print(meujogo)
 
-if result == False:
-    print("Nenhuma duplicidade encontrada")
-    print(volanteGerado)
+### Finalizando com o volante gerado
+    if result == False:
+        print("Nenhuma duplicidade encontrada")
+        print(volanteGerado)
